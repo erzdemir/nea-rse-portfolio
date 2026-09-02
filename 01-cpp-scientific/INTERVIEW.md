@@ -1,24 +1,25 @@
 # C++ projects — spoken notes
 
 ## Project 1 — xs_lookup
-Typed table. Declared interpolation. No silent extrapolation.
+Declared interpolation. No silent extrapolation.
 
 ## Project 2 — xs_compare
-Two evaluations, one tolerance. The tolerance is the business rule.
-JANIS-shaped. I used JANIS; I did not write JANIS.
+Two evaluations, one tolerance. JANIS-shaped.
 
 ## Project 3 — tape_audit
-Required identifiers: MAT, MF, MT, T.
-Good tape exits 0 and prints business keys.
-Bad tape exits 1: "refusing to guess identifiers".
+MAT/MF/MT/T required. Incomplete tape fails closed.
+
+## Project 4 — xs_condense
+Pointwise table to a declared group structure.
+Averaging law is lethargy / 1/E-flux style.
+Empty groups are skipped, not filled with zero.
 
 Live demo:
-  ./build/tape_audit --tape data/sample.tape
-  ./build/tape_audit --tape data/bad.tape
+  ./build/xs_condense --table data/u235_jeff_synthetic.csv --groups data/groups_4.csv --law log-log
 
 Sentence:
-  This is the same discipline as the Python ingest pipeline.
-  NJOY should not start if the control card is incomplete.
+  I would not rewrite NJOY GROUPR. I would pin NJOY in an image
+  and put this kind of contract around the processed product.
 
-## Projects 4-5
-Group condensation, then a pipeline that calls 1-4.
+## Project 5
+process_pipeline: tape + table + groups -> audit record.
