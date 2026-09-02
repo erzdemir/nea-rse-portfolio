@@ -1,0 +1,13 @@
+name: C++ showcase
+on:
+  push:
+    paths: ["01-cpp-scientific/**", ".github/workflows/cpp.yml"]
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: cmake -S 01-cpp-scientific -B 01-cpp-scientific/build -DCMAKE_BUILD_TYPE=Release
+      - run: cmake --build 01-cpp-scientific/build --parallel
+      - run: ctest --test-dir 01-cpp-scientific/build --output-on-failure
+      - run: ./01-cpp-scientific/build/xs_lookup --table 01-cpp-scientific/data/u235_jeff_synthetic.csv --law log-log --energy 0.0253
