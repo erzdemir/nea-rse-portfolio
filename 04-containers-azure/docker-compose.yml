@@ -1,0 +1,20 @@
+# Local demonstration stack — not an Invenio production compose file.
+services:
+  ingest:
+    build:
+      context: ..
+      dockerfile: 04-containers-azure/Dockerfile
+    volumes:
+      - ../02-python-pipelines/pipeline:/opt/app/pipeline:ro
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: databank_demo
+      POSTGRES_USER: databank
+      POSTGRES_PASSWORD: change-me
+    ports:
+      - "5432:5432"
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+volumes:
+  dbdata:

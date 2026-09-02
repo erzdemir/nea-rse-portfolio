@@ -1,0 +1,32 @@
+{
+  "metadata": {
+    "title": "JEFF-4.0 processed ACE files at 300 K (illustrative record)",
+    "creators": [
+      {
+        "person_or_org": {
+          "type": "organisational",
+          "name": "OECD Nuclear Energy Agency Data Bank"
+        }
+      }
+    ],
+    "publication_date": "2025-06-01",
+    "resource_type": { "id": "dataset" },
+    "description": "Interview example only. Not an official JEFF record.",
+    "subjects": [
+      { "subject": "nuclear data" },
+      { "subject": "JEFF" },
+      { "subject": "ACE" }
+    ],
+    "rights": [{ "id": "restricted" }]
+  },
+  "custom_fields": {
+    "nea:library": "JEFF-4.0",
+    "nea:format": "ACE",
+    "nea:processor": "NJOY/FRENDY (version-pinned in pipeline)",
+    "nea:temperature_K": 300,
+    "nea:application": "Monte Carlo transport"
+  },
+  "files": {
+    "enabled": true
+  }
+}

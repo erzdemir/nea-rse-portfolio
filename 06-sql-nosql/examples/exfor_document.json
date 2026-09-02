@@ -1,0 +1,9 @@
+{
+  "accession": "SYNTH-0001",
+  "reaction": "U-235(n,f)",
+  "quantity": "cross section",
+  "points": [
+    {"energy_eV": 0.0253, "value_b": 582.6, "unc_b": 1.1}
+  ],
+  "reference": "synthetic interview document, not EXFOR"
+}
