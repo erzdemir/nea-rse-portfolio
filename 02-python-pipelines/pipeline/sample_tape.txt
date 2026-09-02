@@ -1,3 +1,3 @@
-# Synthetic control card — not a real ENDF tape
+# Synthetic control cards. Not an ENDF-6 tape.
 MAT=U235 MF=3 MT=18 T=293.6
 MAT=U235 MF=3 MT=102 T=293.6
