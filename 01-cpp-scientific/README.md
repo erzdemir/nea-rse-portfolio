@@ -1,16 +1,19 @@
 # C++ toolkit — five interview projects
 
-| # | Binary | Status | Role |
-|---|---|---|---|
-| 1 | xs_lookup | done | Pointwise lookup |
-| 2 | xs_compare | done | Compare two evaluations |
-| 3 | tape_audit | done | Required MAT/MF/MT/T |
-| 4 | xs_condense | done | Pointwise to groups |
-| 5 | process_pipeline | next | Tape to audit record |
+| # | Binary | Role |
+|---|---|---|
+| 1 | xs_lookup | Pointwise lookup |
+| 2 | xs_compare | Compare two evaluations |
+| 3 | tape_audit | Required MAT/MF/MT/T |
+| 4 | xs_condense | Pointwise to groups |
+| 5 | process_pipeline | Tape to JSON audit |
 
 Build:
   cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
   cmake --build build
+  ctest --test-dir build --output-on-failure
 
-Project 4 demo:
-  ./build/xs_condense --table data/u235_jeff_synthetic.csv --groups data/groups_4.csv --law log-log
+Project 5 demo:
+  ./build/process_pipeline --tape data/pipeline.tape
+
+Not official JEFF/ENDF. Not NJOY/JANIS.
