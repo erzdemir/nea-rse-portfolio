@@ -1,19 +1,13 @@
-# How to present Project 2 (about 90 seconds)
+# Python projects 1-2 — spoken notes
 
-Vacancy: integrated pipelines; frameworks for nuclear physics data;
-consistency of business logic and system behaviour.
+## Project 1 endf_ingest
+Same rule as C++ tape_audit. Missing identifiers fail closed.
+The JSON is an audit record, not the physics answer.
 
-Open pipeline/sample_tape.txt and say:
-  These fields are the catalogue key: material, MF, MT, temperature.
+## Project 2 eval_compare
+Same question as C++ xs_compare. Tolerance is the business rule.
+--tol 0.02 exits 1. --tol 0.20 exits 0. Same numbers.
 
-Open endf_ingest.py and say:
-  Missing identifiers fail closed. The output is an audit record a
-  SQL table or Invenio record can store.
-
-Then run the good tape and the bad tape.
-  Good tape prints JSON and exits 0.
-  Bad tape prints an error and exits 1.
-
-Close with:
-  At the Data Bank I would put this guard in front of NJOY or FRENDY
-  so a pipeline cannot start on an incomplete JEFF file.
+Sentence:
+  Python orchestrates and records. C++ freezes the numeric contract.
+  At the Data Bank I would use both in front of NJOY/FRENDY.

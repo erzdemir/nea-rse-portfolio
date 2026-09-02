@@ -1,13 +1,8 @@
-"""Nuclear-data ingest with explicit business-logic guards.
+"""Python Project 1 — ingest with business-logic guards.
 
-Job mapping
-  Integrated pipelines; collection and management of nuclear physics data;
-  consistency of business logic.
-
-A real Data Bank path would next call NJOY or FRENDY. This script only
-accepts or rejects the identifiers those codes must not guess.
+Same rule as C++ tape_audit: MAT/MF/MT/T are required.
+A real Data Bank path would next call NJOY or FRENDY.
 """
-
 from __future__ import annotations
 
 import argparse
@@ -23,7 +18,7 @@ CONTROL_RE = re.compile(
 
 
 class BusinessLogicError(ValueError):
-    """Input violated a declared nuclear-data contract."""
+    pass
 
 
 @dataclass(frozen=True)
@@ -46,7 +41,7 @@ def parse_tape(text: str, source_name: str) -> list[AuditRecord]:
         match = CONTROL_RE.match(line)
         if not match:
             raise BusinessLogicError(
-                f"{source_name}: missing MAT=/MF=/MT=/T= (refusing to guess identifiers): {line}"
+                f"{source_name}: missing MAT=/MF=/MT=/T= (refusing to guess): {line}"
             )
         records.append(
             AuditRecord(
@@ -55,18 +50,18 @@ def parse_tape(text: str, source_name: str) -> list[AuditRecord]:
                 mf=int(match.group("mf")),
                 mt=int(match.group("mt")),
                 temperature_k=float(match.group("temp")),
-                processor="synthetic-ingest/0.2",
+                processor="python-ingest/0.2",
                 status="accepted",
             )
         )
     if not records:
-        raise BusinessLogicError(f"{source_name}: tape contains no control cards")
+        raise BusinessLogicError(f"{source_name}: no control cards")
     return records
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Validate a synthetic nuclear-data tape.")
-    parser.add_argument("--tape", required=True, help="Path to the control-card file")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--tape", required=True)
     args = parser.parse_args(argv)
     path = Path(args.tape)
     try:
@@ -74,7 +69,7 @@ def main(argv: list[str] | None = None) -> int:
     except (OSError, BusinessLogicError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1
-    print(json.dumps([asdict(item) for item in records], indent=2))
+    print(json.dumps([asdict(r) for r in records], indent=2))
     return 0
 
 

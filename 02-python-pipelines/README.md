@@ -1,15 +1,20 @@
-# Project 2 — Python nuclear-data ingest pipeline
+# Python pipelines — five interview projects
 
-Interview project for the OECD NEA Data Bank Research Software Engineer post.
+| # | Program | Status | Role |
+|---|---|---|---|
+| 1 | pipeline/endf_ingest.py | done | Required MAT/MF/MT/T |
+| 2 | pipeline/eval_compare.py | done | Compare two tables |
+| 3 | group_condense.py | next | Pointwise to groups |
+| 4 | catalogue.py | next | SQLite audit store |
+| 5 | run_pipeline.py | next | Orchestrate + optional C++ |
 
-Python enforces business identifiers before any processing starts.
-A tape without MAT/MF/MT/T is rejected. The program does not guess.
-
-This is not NJOY, FRENDY or a real ENDF-6 parser.
-
-Run:
+Project 1:
   python pipeline/endf_ingest.py --tape pipeline/sample_tape.txt
   python pipeline/endf_ingest.py --tape pipeline/bad_tape.txt
-  python tests/test_ingest.py
 
-See INTERVIEW.md for the spoken walk-through.
+Project 2:
+  python pipeline/eval_compare.py --a data/u235_jeff_synthetic.csv --b data/u235_endf_synthetic.csv --tol 0.02
+  python pipeline/eval_compare.py --a data/u235_jeff_synthetic.csv --b data/u235_endf_synthetic.csv --tol 0.20
+
+Tests:
+  python tests/test_projects_1_2.py
