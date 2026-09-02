@@ -1,14 +1,22 @@
-# How to present Project 1 (about 90 seconds)
+# C++ projects — spoken notes
 
-Vacancy: strong scientific C++ and production-quality research software.
+## Project 1 — xs_lookup
+Typed table. Declared interpolation. No silent extrapolation.
 
-Open include/nea/xs_table.hpp and say:
-  Interpolation is part of the contract, not a hidden default.
-  lookup() throws off-grid. try_lookup() returns empty.
-  A Data Bank service must not invent a number.
+## Project 2 — xs_compare
+JANIS-shaped question: two evaluations, one query grid, one tolerance.
+The tolerance is the business rule. Change it, and the accepted answer changes.
 
-Then say:
-  Fortran still owns NJOY and FRENDY. C++ is the typed contract I would
-  put around those processors. Python would orchestrate the pipeline.
+Live demo:
+  ./build/xs_compare --a data/u235_jeff_synthetic.csv --b data/u235_endf_synthetic.csv --tol 0.02
+  Exit code 1 is the demo: the libraries differ by more than 2 percent.
+  ./build/xs_compare --a data/u235_jeff_synthetic.csv --b data/u235_endf_synthetic.csv --tol 0.20
+  Same numbers, now accepted.
 
-Do not claim this file is JEFF-4.0.
+Sentence:
+  I have used JANIS on JEFF, ENDF and EXFOR. I did not write JANIS.
+  This C++ tool is how I would characterise two processed products
+  before a service migration.
+
+## Projects 3-5
+Tape audit, group condensation, then a pipeline that calls 1-4.
