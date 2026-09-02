@@ -1,0 +1,1 @@
+Synthetic input marker for the Linux batch wrapper.

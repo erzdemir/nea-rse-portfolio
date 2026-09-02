@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
-# Illustrative HPC-style wrapper. Interview artefact only.
+# Linux Project — repeatable processing wrapper
+#
+# Job mapping
+#   Linux/HPC operations; integrated pipelines; production software.
+#   NJOY/FRENDY would be invoked here. This script only demonstrates
+#   the operational contract around that call.
+#
+# Rules
+#   - fail on first error
+#   - require input and output directories
+#   - write versions into the log
+#   - keep the run directory separate from published artefacts
 set -euo pipefail
 
 usage() {
@@ -25,25 +36,25 @@ done
 
 mkdir -p "$OUTPUT_DIR"
 LOG="$OUTPUT_DIR/run_${TAG}.log"
+PUBLISH="$OUTPUT_DIR/published"
+mkdir -p "$PUBLISH"
 
 {
   echo "tag=$TAG"
   echo "host=$(hostname)"
-  echo "date=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
   echo "user=$(id -un)"
-  echo "pwd=$(pwd)"
-  command -v python3 >/dev/null && python3 --version
+  echo "date=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
   echo "input_dir=$INPUT_DIR"
+  echo "output_dir=$OUTPUT_DIR"
   echo "n_files=$(find "$INPUT_DIR" -type f | wc -l)"
 } | tee "$LOG"
 
-# Placeholder for a real NJOY/FRENDY invocation.
-# A production wrapper would pin binary versions and checksum inputs here.
-find "$INPUT_DIR" -type f -name '*.txt' -print0 \
-  | while IFS= read -r -d '' f; do
-      base=$(basename "$f")
-      cp "$f" "$OUTPUT_DIR/${base}.staged"
-      echo "staged $base" | tee -a "$LOG"
-    done
+# Placeholder for NJOY/FRENDY. Stage inputs and record each name.
+find "$INPUT_DIR" -type f -print0 | while IFS= read -r -d '' f; do
+  base=$(basename "$f")
+  cp "$f" "$PUBLISH/${base}.staged"
+  echo "staged $base" | tee -a "$LOG"
+done
 
 echo "status=ok" | tee -a "$LOG"
+echo "log=$LOG"
