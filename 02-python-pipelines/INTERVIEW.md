@@ -1,17 +1,20 @@
 # Python projects — spoken notes
 
-## 1 endf_ingest
-Required identifiers. Same rule as C++ tape_audit.
+## 1-3
+Ingest guards, evaluation compare, group condensation.
+Same contracts as C++ tape_audit, xs_compare, xs_condense.
 
-## 2 eval_compare
-Two tables, one tolerance. Same question as C++ xs_compare.
-
-## 3 group_condense
-Pointwise to declared groups. Lethargy average. No silent zero-fill.
-Same contract as C++ xs_condense. Not NJOY GROUPR.
+## 4 catalogue
+SQL is the system of record for identifiers and ingest status.
+Load JSON from Project 1 into SQLite and list it back.
 
 Live demo:
-  python pipeline/group_condense.py --table data/u235_jeff_synthetic.csv --groups data/groups_4.csv
+  python pipeline/endf_ingest.py --tape pipeline/sample_tape.txt > data/audit.json
+  python pipeline/catalogue.py --db data/catalogue.sqlite --load-json data/audit.json --list
 
-## 4-5
-SQLite catalogue, then an orchestrator that can also call the C++ binaries.
+Sentence:
+  InvenioRDM still needs a relational core. This table is that core.
+  Files and ACE libraries do not belong in SQLite as blobs.
+
+## 5
+Orchestrator that runs 1-4 and can call the C++ pipeline.
