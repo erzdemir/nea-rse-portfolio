@@ -1,19 +1,15 @@
-# Linux project — spoken notes (about 90 seconds)
+# Linux project — spoken notes
 
-Vacancy: Linux-based operating systems; production software; pipelines.
-
-Open batch_process.sh and point at:
-  set -euo pipefail
-  required -i and -o
-  log contains host, user, date, tag
-  published artefacts sit in a separate directory
-
-Say:
-  A processing campaign that cannot be replayed from a script
-  is not a Data Bank service. NJOY or FRENDY would replace the
-  copy step. The wrapper stays the same.
+Open run_campaign.sh and say:
+  One command is the production path.
+  Environment is recorded first.
+  Inputs are validated before any processing.
+  The log is part of the scientific record.
 
 Live demo:
-  bash scripts/check_env.sh
-  bash scripts/batch_process.sh -i data/input -o data/output -t demo
-  cat data/output/run_demo.log
+  bash tests/run_demo.sh
+  cat data/output_demo/run_demo.log
+
+Sentence:
+  A Data Bank campaign that cannot be replayed from a script
+  is not a service. Docker comes later. This folder is the Unix core.
