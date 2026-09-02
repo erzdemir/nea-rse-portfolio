@@ -1,13 +1,17 @@
-# Python projects 1-2 — spoken notes
+# Python projects — spoken notes
 
-## Project 1 endf_ingest
-Same rule as C++ tape_audit. Missing identifiers fail closed.
-The JSON is an audit record, not the physics answer.
+## 1 endf_ingest
+Required identifiers. Same rule as C++ tape_audit.
 
-## Project 2 eval_compare
-Same question as C++ xs_compare. Tolerance is the business rule.
---tol 0.02 exits 1. --tol 0.20 exits 0. Same numbers.
+## 2 eval_compare
+Two tables, one tolerance. Same question as C++ xs_compare.
 
-Sentence:
-  Python orchestrates and records. C++ freezes the numeric contract.
-  At the Data Bank I would use both in front of NJOY/FRENDY.
+## 3 group_condense
+Pointwise to declared groups. Lethargy average. No silent zero-fill.
+Same contract as C++ xs_condense. Not NJOY GROUPR.
+
+Live demo:
+  python pipeline/group_condense.py --table data/u235_jeff_synthetic.csv --groups data/groups_4.csv
+
+## 4-5
+SQLite catalogue, then an orchestrator that can also call the C++ binaries.
